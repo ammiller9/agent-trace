@@ -52,3 +52,38 @@ export interface ParseResult {
   events: TraceEvent[];
   issues: ParseIssue[];
 }
+
+export interface EventCounts {
+  user: number;
+  assistant: number;
+  tool_call: number;
+  tool_result: number;
+}
+
+export interface ToolStat {
+  name: string;
+  calls: number;
+  failures: number;
+  totalMs: number;
+  avgMs: number;
+  maxMs: number;
+  timeShare: number;
+}
+
+export interface TraceStats {
+  totalEvents: number;
+  eventCounts: EventCounts;
+  wallClockMs?: number;
+  toolTimeMs: number;
+  toolTimeShare?: number;
+  toolCalls: number;
+  completedToolCalls: number;
+  pendingToolCalls: number;
+  failedToolCalls: number;
+  failureRate?: number;
+  inputTokens: number;
+  outputTokens: number;
+  totalTokens: number;
+  tools: ToolStat[];
+  orphanResults: number;
+}
